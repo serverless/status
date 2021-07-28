@@ -1,0 +1,9 @@
+{
+  "name": "status.serverless.com",
+  "version": "1.0.0",
+  "description": "The Serverless Status Dashboard",
+  "main": "index.js",
+  "dependencies": {
+    "nanoid": "^3.1.20"
+  }
+}

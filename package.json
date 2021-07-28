@@ -1,0 +1,34 @@
+{
+  "name": "status.serverless.com",
+  "version": "0.1.0",
+  "description": "go.serverless.com - a serverless url shortner.",
+  "main": "./index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Serverless, Inc.",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "eslintConfig": {
+    "extends": "@serverless/eslint-config/node",
+    "root": true,
+    "rules": {
+      "no-console": "off",
+      "no-underscore-dangle": "off"
+    }
+  },
+  "eslintIgnore": [
+    "!/.github",
+    "/templates"
+  ],
+  "devDependencies": {
+    "@serverless/eslint-config": "^3.0.0",
+    "eslint": "^7.17.0",
+    "eslint-plugin-import": "^2.22.1",
+    "git-list-updated": "^1.2.1",
+    "github-release-from-cc-changelog": "^2.2.0",
+    "prettier": "^2.2.1"
+  }
+}
