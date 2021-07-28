@@ -9,9 +9,9 @@
 ⚡️
 <br>
 <br>
-<b>go.serverless.com</b>
+<b>status.serverless.com</b>
 <br>
-a serverless url shortner
+The Serverless Status Dashboard
 </p>
   
 <br>
@@ -23,15 +23,3 @@ a serverless url shortner
 <br>
 <br>
 <br>
-
-```bash
-GET https://go.serverless.com/?url=https://llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk
-```
-
-```js
-const go = require('@serverless/go')
-
-const url = await go('https://llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk')
-```
-
-
