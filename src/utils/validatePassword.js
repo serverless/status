@@ -8,7 +8,7 @@ const validatePassword = async (req, res, next) => {
   try {
     console.log('Validating password');
     authorize(req);
-    return res.send();
+    return res.send({});
   } catch (e) {
     next(e);
   }
