@@ -24,7 +24,7 @@ The Serverless Status Page
 <br>
 <br>
 
-**Serverless Status** ⎯⎯⎯ A serverless status page powered by Serverless Cloud. You can see a live demo and follow up on the status of all Serverless, Inc's services at status.serverless.com.
+**Serverless Status** ⎯⎯⎯ A serverless status page powered by Serverless Cloud. You can see a live demo and follow up on the status of all Serverless, Inc's services at [status.serverless.com](https://status.serverless.com).
 
 To get started, make sure the Serverless Cloud CLI is installed...
 
@@ -45,6 +45,6 @@ Next, start your Serverless Cloud experience with the `start` command...
 cloud start
 ```
 
-Finally, you'll need to set the `ADMIN_PASSWORD` param in the Serverless Cloud dashboard to any strong value of your choice. This will be the password you'll use to access the admin page.
+Finally, you'll need to set the `ADMIN_PASSWORD` param in the [Serverless Cloud Dashboard](https://cloud.serverless.com) to any strong value of your choice. This will be the password you'll use to access the admin page.
 
 After activation in the CLI, you should see a url to your personal instance of the status page. Open this url in the browser to see the public status page. Visit the `/admin` page and enter the password you've chosen to access the admin page to add services, incidents and updates.
