@@ -24,7 +24,7 @@ The Serverless Status Page
 <br>
 <br>
 
-**Status** ⎯⎯⎯ A serverless status page powered by Serverless Cloud. You can see a live demo and follow up on the status of all Serverless, Inc's services at status.serverless.com.
+**Serverless Status** ⎯⎯⎯ A serverless status page powered by Serverless Cloud. You can see a live demo and follow up on the status of all Serverless, Inc's services at status.serverless.com.
 
 To get started, make sure the Serverless Cloud CLI is installed...
 
