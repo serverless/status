@@ -1,7 +1,7 @@
 'use strict';
 
-const { customAlphabet } = require('nanoid');
+const crypto = require('crypto');
 
-const random = customAlphabet('abcdefghijklmnopqrstuvwxyz1234567890', 6);
+const random = crypto.randomBytes(5).toString('hex');
 
 module.exports = random;
