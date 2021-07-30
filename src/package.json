@@ -2,8 +2,5 @@
   "name": "status.serverless.com",
   "version": "1.0.0",
   "description": "The Serverless Status Dashboard",
-  "main": "api.js",
-  "dependencies": {
-    "nanoid": "^3.1.20"
-  }
+  "main": "api.js"
 }

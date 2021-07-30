@@ -39,8 +39,12 @@ git clone https://github.com/serverless/status.git
 cd src
 ```
 
-Then, start your Serverless Cloud experience with the `start` command...
+Next, start your Serverless Cloud experience with the `start` command...
 
 ```
 cloud start
 ```
+
+Finally, you'll need to set the `ADMIN_PASSWORD` param in the Serverless Cloud dashboard to any strong value of your choice. This will be the password you'll use to access the admin page.
+
+After activation in the CLI, you should see a url to your personal instance of the status page. Open this url in the browser to see the public status page. Visit the `/admin` page and enter the password you've chosen to access the admin page to add services, incidents and updates.
