@@ -3,10 +3,14 @@
 const { api } = require('@serverless/cloud'); // eslint-disable-line
 
 const errorHandler = require('./errors/errorHandler');
+const validatePassword = require('./utils/validatePassword');
 
 const { putService, getService, deleteService, listServices } = require('./services');
 const { putIncident, getIncident, deleteIncident, listIncidents } = require('./incidents');
 const { putUpdate, getUpdate, deleteUpdate, listUpdates } = require('./updates');
+
+// Validate Password
+api.get('/auth', validatePassword);
 
 // Services
 api.put('/services', putService);
