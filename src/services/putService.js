@@ -47,7 +47,9 @@ const putService = async (req, res, next) => {
       serviceToSet.serviceDescription = '';
     }
 
-    const setService = await data.set(`services:${serviceId}`, serviceToSet);
+    const setService = await data.set(`services:${serviceId}`, serviceToSet, {
+      label1: serviceStatus,
+    });
 
     return res.send(setService);
   } catch (e) {

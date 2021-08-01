@@ -65,7 +65,9 @@ const putIncident = async (req, res, next) => {
       incidentToSet.incidentDescription = '';
     }
 
-    const setIncident = await data.set(`incidents:${incidentId}`, incidentToSet);
+    const setIncident = await data.set(`incidents:${incidentId}`, incidentToSet, {
+      label1: incidentStatus,
+    });
 
     return res.send(setIncident);
   } catch (e) {

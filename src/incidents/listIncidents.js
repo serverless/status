@@ -2,13 +2,24 @@
 
 'use strict';
 
+const { data } = require('@serverless/cloud'); // eslint-disable-line
+
 const getCollectionItems = require('../utils/getCollectionItems');
 
 const listIncidents = async (req, res, next) => {
   try {
+    const incidentStatus = req.query.incidentStatus;
+
     console.log('Listing incidents');
 
-    const incidents = await getCollectionItems('incidents');
+    let incidents;
+    if (incidentStatus) {
+      const { items } = await data.getByLabel('label1', incidentStatus);
+
+      incidents = items.map((item) => item.value);
+    } else {
+      incidents = await getCollectionItems('incidents');
+    }
 
     return res.send({ incidents });
   } catch (e) {
