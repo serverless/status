@@ -28,11 +28,7 @@ const putUpdate = async (req, res, next) => {
       throw new Error(`Invalid incidentStatus: ${incidentStatus}`);
     }
 
-    if (!affectedServicesStatus) {
-      throw new Error('Missing affectedServicesStatus');
-    }
-
-    if (!serviceStatuses.includes(affectedServicesStatus)) {
+    if (affectedServicesStatus && !serviceStatuses.includes(affectedServicesStatus)) {
       throw new Error(`Invalid affectedServicesStatus: ${affectedServicesStatus}`);
     }
 
@@ -66,6 +62,10 @@ const putUpdate = async (req, res, next) => {
       affectedServicesStatus,
       updateUpdatedAt,
     };
+
+    if (affectedServicesStatus) {
+      updateToSet.affectedServicesStatus = affectedServicesStatus;
+    }
 
     const existingUpdate = await data.get(`incident-${incidentId}:updates:${updateId}`);
 
