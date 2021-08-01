@@ -1,67 +1,105 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Link as RouterLink } from 'react-router-dom';
-import theme from './theme'
-import { ChakraProvider, ColorModeScript, Button, Box, Container, HStack, Link, Heading, } from "@chakra-ui/react"
-import { PrivateRoute } from './PrivateRoute'
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
-import reportWebVitals from './reportWebVitals';
-import { Home } from './Home';
+import theme from "./theme";
+import {
+  ChakraProvider,
+  ColorModeScript,
+  Button,
+  Box,
+  Container,
+  HStack,
+
+  Heading,
+} from "@chakra-ui/react";
 
 
+import reportWebVitals from "./reportWebVitals";
+
+import { Incidents } from "./Incidents";
+import { Services } from "./Services";
+import { useLocalStorage } from "react-use";
+import { Login } from "./Login";
 
 const App = () => {
+  const [activePage, setActivePage] = useState('/')
+  const [storedPassword] = useLocalStorage('serverless-status', '');
+  const isLoggedIn = !!storedPassword
+  
   const logout = () => {
     localStorage.removeItem("serverless-status");
     window.location.reload();
-  }
-  return (
-    <Switch>
-      <Box minHeight="100vh">
-        <Box
-          p={5}
-          borderBottomWidth="1px"
-        >
-          <Container maxW="container.lg">
+  };
+  
 
-            <HStack spacing="54px">
-              <Link as={RouterLink} to="/">
-                <Heading as="h5" size="md">Services</Heading>
-              </Link>
-              <Link as={RouterLink} to="/incidents">
-                <Heading as="h5" size="md">Incidents</Heading>
-              </Link>
-              <Button onClick={logout}>
-                Logout
-              </Button>
-            </HStack>
-          </Container>
-        </Box>
+  
+  return (
+    
+      <Box minHeight="100vh">
+        {
+
+          <Box p={5} borderBottomWidth="1px">
+            <Container maxW="container.lg">
+              <HStack justifyContent="space-between">
+                <HStack spacing="54px">
+                  <Button variant="ghost" onClick={() => setActivePage('/')}>
+                    <Heading
+                      as="h5"
+                      size="md"
+                      color={
+                        activePage === "/"
+                          ? theme.colors.brand[100]
+                          : "currentcolor"
+                      }
+                    >
+                      Incidents
+                    </Heading>
+                  </Button>
+                  <Button variant="ghost" onClick={() => setActivePage('/services')}>
+                    <Heading as="h5" size="md"
+                      color={
+
+                        activePage === "/services"
+                          ? theme.colors.brand[100]
+                          : "currentcolor"
+                      }
+                    >
+                      Services
+                    </Heading>
+                  </Button>
+
+
+                </HStack>
+                {isLoggedIn ?
+                <Button onClick={logout}>Logout</Button>
+                : 
+                <Button onClick={() => setActivePage('/login')}>Login</Button>
+                }
+                  
+              </HStack>
+            </Container>
+          </Box>
+        }
         <Container maxW="container.lg">
-          <PrivateRoute path="/" exact component={Home} />
-          
+          {activePage === '/' ? <Incidents /> : activePage === '/services' ? <Services /> : activePage === '/login' ? <Login /> : null}
+
+
         </Container>
       </Box>
-    </Switch>
-  )
-}
-
+    
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-
     <ChakraProvider theme={theme}>
-
-
-      <BrowserRouter>
-
+      
         <App />
-
-      </BrowserRouter>
+      
     </ChakraProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -9,7 +9,7 @@ const incidentStatuses = require('../utils/incidentStatuses');
 
 const putIncident = async (req, res, next) => {
   try {
-    console.log('Putting incident');
+    
     authorize(req);
     const { incidentName, incidentDescription, affectedServicesIds, incidentStatus } = req.body;
     const incidentId = req.body.incidentId || random();
@@ -65,7 +65,9 @@ const putIncident = async (req, res, next) => {
       incidentToSet.incidentDescription = '';
     }
 
-    const setIncident = await data.set(`incidents:${incidentId}`, incidentToSet);
+    const setIncident = await data.set(`incidents:${incidentId}`, incidentToSet, {
+      label1: incidentStatus,
+    });
 
     return res.send(setIncident);
   } catch (e) {

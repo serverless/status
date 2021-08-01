@@ -9,7 +9,7 @@ const getCollectionItems = require('../utils/getCollectionItems');
 
 const deleteIncident = async (req, res, next) => {
   try {
-    console.log('Deleting incident');
+    
     authorize(req);
     const { incidentId } = req.params;
 

@@ -6,7 +6,7 @@ const { data } = require('@serverless/cloud'); // eslint-disable-line
 
 const getService = async (req, res, next) => {
   try {
-    console.log('Getting service');
+    
     const { serviceId } = req.params;
 
     const service = await data.get(`services:${serviceId}`);

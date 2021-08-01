@@ -1,28 +1,31 @@
-import { Heading, Button, HStack, VStack, Box, Select } from "@chakra-ui/react";
+import { Heading, Button, HStack, VStack, Box, Select, Skeleton } from "@chakra-ui/react";
 import { useState } from "react";
-import { useTheme } from "@emotion/react";
+
 
 import { ServiceModal } from "./ServiceModal";
 import { Resource } from "./Resource";
 import { Status } from "./Status";
 import { UpdatedAt } from "./UpdatedAt";
+import { useLocalStorage } from "react-use";
 
 export const Services = () => {
-    const theme = useTheme()
+    
 
 
     const [selectedService, setSelectedService] = useState(null);
-    const [filterServices, setFilterServices] = useState(null);
-
-    console.log('filterServices',filterServices)
+    const [filterServices, setFilterServices] = useState('');
+    
+    const [storedPassword] = useLocalStorage('serverless-status', '');
+    const isLoggedIn = !!storedPassword
     return (
-        <Box>
+        <Box mt={"30px"}>
             <Box>
                 <HStack spacing="24px" justifyContent="space-between">
-                    <Heading>Services</Heading>
+                    <Heading size="lg">Services</Heading>
                     <HStack >
                     <Select
-                        placeholder="Filter"
+                        maxW="120px"
+                        placeholder="All"
                         value={filterServices}
                         onChange={(e) => setFilterServices(e.target.value)}
                     >
@@ -31,9 +34,12 @@ export const Services = () => {
                         <option value="Partial Outage">Partial Outage</option>
                         <option value="Major Outage">Major Outage</option>
                     </Select>
-                    <Button size="sm" onClick={() => setSelectedService({})} colorScheme="blue">
+                    {isLoggedIn && 
+                    
+                    <Button size="sm" onClick={() => setSelectedService({})}colorScheme="brand" color="#fff" >
                         New Service
                     </Button>
+                    }
                         </HStack>
                 </HStack>
 
@@ -42,6 +48,8 @@ export const Services = () => {
                     path={`services${filterServices ? `?serviceStatus=${filterServices}` : ``}`}
                     render={(props) => (
                         <VStack alignItems="flex-start" mt={25} spacing="24px">
+                            {isLoggedIn && 
+                            
                             <ServiceModal
 
                                 selectedService={selectedService}
@@ -51,14 +59,25 @@ export const Services = () => {
                                 loadingAdd={props.loadingAdd}
                                 loadingDelete={props.loadingDelete}
                             />
-                            {props.data &&
+                            }
+                            {props.loading ? 
+                               <>
+                               <Skeleton height="125px" width="100%" startColor="grey.700" endColor="grey.800"/>
+                               <Skeleton height="125px" width="100%" startColor="grey.700" endColor="grey.800"/>
+                           </>
+                            : props.data &&
                                 props.data.services &&
                                 props.data.services
                                     .sort((a, b) => b.serviceCreatedAt - a.serviceCreatedAt)
                                     .map((service) => (
                                         <Box
                                             cursor="pointer"
-                                            onClick={() => setSelectedService(service)}
+                                            onClick={() => {
+                                                if (isLoggedIn) {
+
+                                                    setSelectedService(service)
+                                                }
+                                            }}
                                             key={service.serviceId}
                                             spacing={8}
                                             width="100%"
@@ -70,7 +89,7 @@ export const Services = () => {
                                             css={{
                                                 transition: 'all .3s ease-in-out',
                                                 '&:hover': {
-                                                    backgroundColor: theme.colors.gray[700]
+                                                    backgroundColor: '#1D1D1D',
                                                 }
                                             }}
                                         >

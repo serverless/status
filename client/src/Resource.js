@@ -11,6 +11,7 @@ export const Resource = ({path, render}) => {
     const { data, error } = useSWR(path, (url) => apiClient({ url }))
     const loading = !data && !error
     
+    
     const reload = () => mutate(path)
     const deleteResource = async (resourceId, next) => {
         try {
@@ -30,6 +31,7 @@ export const Resource = ({path, render}) => {
                 next()
             }
         } catch (e) {
+            
             setLoadingDelete(null)
             toast({
                 title: e.message,

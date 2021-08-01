@@ -26,7 +26,7 @@ import {
 import { useEffect } from "react";
 
 export const ServiceModal = ({ selectedService, setSelectedService, addService, loadingAdd, deleteService, loadingDelete }) => {
-    console.log('loadingDelete', loadingDelete)
+    
     const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
     const { isOpen: isAlertOpen, onOpen: onAlertOpen, onClose: onAlertClose } = useDisclosure();
     const deleteServiceNext = () => {
@@ -100,17 +100,13 @@ export const ServiceModal = ({ selectedService, setSelectedService, addService, 
                     </VStack>
                 </ModalBody>
 
-                {/* {loadingDelete ? (
-            <Spinner size="sm" />
-          ) : (
-            <DeleteIcon style={{ cursor: "pointer" }} onClick={deleteService} />
-          )} */}
+            
                 <ModalFooter>
 
                     <Button
                         onClick={onAlertOpen}
                         margin="auto auto auto 0"
-                        leftIcon={<DeleteIcon />} colorScheme="red" >
+                        leftIcon={<DeleteIcon />}  >
                         Delete
                     </Button>
                     <AlertDialog
@@ -132,7 +128,7 @@ export const ServiceModal = ({ selectedService, setSelectedService, addService, 
                                     <Button onClick={onAlertClose}>
                                         Cancel
                                     </Button>
-                                    <Button isLoading={loadingDelete} colorScheme="red" onClick={() => deleteService(selectedService?.serviceId, deleteServiceNext)} ml={3}>
+                                    <Button isLoading={loadingDelete} colorScheme="brand" color="#fff" onClick={() => deleteService(selectedService?.serviceId, deleteServiceNext)} ml={3}>
                                         Delete
                                     </Button>
                                 </AlertDialogFooter>
@@ -142,7 +138,7 @@ export const ServiceModal = ({ selectedService, setSelectedService, addService, 
                     <Button mr={3} onClick={handleModalClose}>
                         Close
                     </Button>
-                    <Button isLoading={loadingAdd} colorScheme="blue" onClick={handleSaveService}>Save</Button>
+                    <Button isLoading={loadingAdd} colorScheme="brand" color="#fff" onClick={handleSaveService}>Save</Button>
                 </ModalFooter>
             </ModalContent>
 

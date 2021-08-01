@@ -9,7 +9,7 @@ export const UpdatesRow = ({ incident }) => {
     const theme = useTheme()
     const { data } = useSWR(`incidents/${incident?.incidentId}/updates`, (url) => apiClient({ url }))
     const updates = data?.updates
-    console.log('updates', updates)
+    
     return (
 
         <Box borderLeftWidth="1px" borderLeftColor="grey"  transform="translateY(10px)">
