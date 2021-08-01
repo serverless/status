@@ -9,7 +9,7 @@ const incidentStatuses = require('../utils/incidentStatuses');
 
 const putIncident = async (req, res, next) => {
   try {
-    console.log('Putting incident');
+    
     authorize(req);
     const { incidentName, incidentDescription, affectedServicesIds, incidentStatus } = req.body;
     const incidentId = req.body.incidentId || random();

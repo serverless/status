@@ -9,7 +9,7 @@ const serviceStatuses = require('../utils/serviceStatuses');
 
 const putService = async (req, res, next) => {
   try {
-    console.log('Putting service');
+    
     authorize(req);
     const { serviceName, serviceDescription, serviceStatus } = req.body;
     const serviceId = req.body.serviceId || random();

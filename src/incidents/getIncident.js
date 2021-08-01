@@ -6,7 +6,7 @@ const { data } = require('@serverless/cloud'); // eslint-disable-line
 
 const getIncident = async (req, res, next) => {
   try {
-    console.log('Getting incident');
+    
     const { incidentId } = req.params;
 
     const incident = await data.get(`incidents:${incidentId}`);

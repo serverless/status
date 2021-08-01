@@ -9,7 +9,7 @@ const getCollectionItems = require('../utils/getCollectionItems');
 const listServices = async (req, res, next) => {
   try {
     const serviceStatus = req.query.serviceStatus;
-    console.log('Listing services');
+    
 
     let services;
     if (serviceStatus) {

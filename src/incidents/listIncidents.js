@@ -10,7 +10,7 @@ const listIncidents = async (req, res, next) => {
   try {
     const incidentStatus = req.query.incidentStatus;
 
-    console.log('Listing incidents');
+    
 
     let incidents;
     if (incidentStatus) {

@@ -9,7 +9,7 @@ const getCollectionItems = require('../utils/getCollectionItems');
 
 const deleteService = async (req, res, next) => {
   try {
-    console.log('Deleting service');
+    
     authorize(req);
     const { serviceId } = req.params;
 
