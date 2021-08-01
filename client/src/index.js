@@ -41,7 +41,7 @@ const App = () => {
         <Box p={5} borderBottomWidth="1px">
           <Container maxW="container.lg">
             <HStack justifyContent="space-between">
-                <img src={ServerlessCloudLogo} style={{ maxWidth: '200px' }} alt="Serverless Cloud" />
+                <img src={ServerlessCloudLogo} style={{ maxWidth: '200px' }} alt="Serverless Cloud" onClick={() => setActivePage('/')}/>
               Ç
               {isLoggedIn ?
                 <Button onClick={logout}>Logout</Button>
