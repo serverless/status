@@ -1,16 +1,20 @@
 
-const baseURL = 'https://pleasent-package-3eqvi.cloud.serverless.com'
+const baseURL = 'https://pleasent-package-3eqvi.cloud.serverless.com/api'
 
-const getHeaders = (password) => ({
-    Authorization: `Bearer ${password || JSON.parse(localStorage.getItem("serverless-status") || {}) || ""
-        }`,
-    "Content-Type": "application/json",
-});
+const getHeaders = (password) => {
+    const storedPassword = localStorage.getItem("serverless-status")
+    const parseStoredPassword = storedPassword ? JSON.parse(storedPassword) : ''
+    
+    return {
+        Authorization: `Bearer ${password || parseStoredPassword}`,
+        "Content-Type": "application/json",
+    }
+}
 export const apiClient = async ({ url, body, password, method = 'GET' }) => {
     
     const res = await fetch(`${baseURL}/${url}`, {
         method,
-        headers: getHeaders(password || {}),
+        headers: getHeaders(password),
         body
     })
     

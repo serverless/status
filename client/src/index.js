@@ -12,7 +12,7 @@ import {
 
   Heading,
 } from "@chakra-ui/react";
-
+import ServerlessCloudLogo from './assets/serverless-cloud-text.svg'
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -25,79 +25,55 @@ const App = () => {
   const [activePage, setActivePage] = useState('/')
   const [storedPassword] = useLocalStorage('serverless-status', '');
   const isLoggedIn = !!storedPassword
-  
+
   const logout = () => {
     localStorage.removeItem("serverless-status");
     window.location.reload();
   };
-  
 
-  
+
+
   return (
-    
-      <Box minHeight="100vh">
-        {
 
-          <Box p={5} borderBottomWidth="1px">
-            <Container maxW="container.lg">
-              <HStack justifyContent="space-between">
-                <HStack spacing="54px">
-                  <Button variant="ghost" onClick={() => setActivePage('/')}>
-                    <Heading
-                      as="h5"
-                      size="md"
-                      color={
-                        activePage === "/"
-                          ? theme.colors.brand[100]
-                          : "currentcolor"
-                      }
-                    >
-                      Incidents
-                    </Heading>
-                  </Button>
-                  <Button variant="ghost" onClick={() => setActivePage('/services')}>
-                    <Heading as="h5" size="md"
-                      color={
+    <Box minHeight="100vh">
+      {
 
-                        activePage === "/services"
-                          ? theme.colors.brand[100]
-                          : "currentcolor"
-                      }
-                    >
-                      Services
-                    </Heading>
-                  </Button>
-
-
-                </HStack>
-                {isLoggedIn ?
+        <Box p={5} borderBottomWidth="1px">
+          <Container maxW="container.lg">
+            <HStack justifyContent="space-between">
+                <img src={ServerlessCloudLogo} style={{ maxWidth: '200px' }} alt="Serverless Cloud" />
+              Ç
+              {isLoggedIn ?
                 <Button onClick={logout}>Logout</Button>
-                : 
+                :
                 <Button onClick={() => setActivePage('/login')}>Login</Button>
-                }
-                  
-              </HStack>
-            </Container>
-          </Box>
-        }
-        <Container maxW="container.lg">
-          {activePage === '/' ? <Incidents /> : activePage === '/services' ? <Services /> : activePage === '/login' ? <Login /> : null}
+              }
+
+            </HStack>
+          </Container>
+        </Box>
+      }
+      <Container maxW="container.lg">
+        {activePage === '/' ?
+          <>
+            <Services />
+            <Incidents />
+          </>
+          : activePage === '/login' ? <Login /> : null}
 
 
-        </Container>
-      </Box>
-    
+      </Container>
+    </Box>
+
   );
 };
 
 ReactDOM.render(
   <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    <ChakraProvider theme={theme}>
-      
+      <ChakraProvider theme={theme}>
         <App />
-      
-    </ChakraProvider>
+      </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
