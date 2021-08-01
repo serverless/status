@@ -1,5 +1,5 @@
 
-const baseURL = 'https://pleasent-package-3eqvi.cloud.serverless.com/api'
+const baseURL = `${window.location.origin}/api`
 
 const getHeaders = (password) => {
     const storedPassword = localStorage.getItem("serverless-status")
