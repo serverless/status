@@ -9,7 +9,7 @@
 ⚡️
 <br>
 <br>
-<b>status.serverless.com</b>
+<b>cloud.serverless.com</b>
 <br>
 The Serverless Status Page
 </p>
@@ -24,7 +24,7 @@ The Serverless Status Page
 <br>
 <br>
 
-**Serverless Status** ⎯⎯⎯ The Serverless Status Page, powered by [Serverless Cloud](https://serverless.com/cloud). You can see a live demo and follow up on the status of all Serverless, Inc's services at [status.serverless.com](https://status.serverless.com).
+**Serverless Status** ⎯⎯⎯ The Serverless Status Page, powered by [Serverless Cloud](https://serverless.com/cloud). You can see a live demo [at this link](https://magical-package-m2777.cloud.serverless.com/).
 
 To get started, make sure the Serverless Cloud CLI is installed...
 
